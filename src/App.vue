@@ -1,10 +1,30 @@
 <template>
+  <NavBar msg="Natural History Museum" :currentPage="currentPage"/>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/">Dinosaurs</router-link> |
+    <router-link to="/space">Space</router-link> |
+    <router-link to="/ocean">Oceans</router-link> |
+    <router-link to="/wildlife">Wildlife</router-link>
   </nav>
   <router-view/>
 </template>
+
+<script>
+import NavBar from '@/components/Navbar.vue';
+
+export default {
+  name: 'App',
+  components: {
+    NavBar,
+  },
+  computed: {
+    // todo: potencial mixing/helper
+    currentPage() {
+      return this.$route.name;
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
